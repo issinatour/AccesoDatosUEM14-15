@@ -23,5 +23,9 @@ public class Ejercicio01 {
 					
 		
 	}
+	
+	public void metodoTest(){
+		System.out.println("test");
+	}
 
 }
