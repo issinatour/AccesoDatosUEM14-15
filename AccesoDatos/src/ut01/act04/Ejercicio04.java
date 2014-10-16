@@ -1,8 +1,51 @@
 package ut01.act04;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class Ejercicio04 {
-	//Obtener la frecuencia de los nombres de los días de la semana 
-	//(cuántas veces se repite “lunes”, etcétera) y mostrar el resultado en su orden natural.
-	
-	
+
+	private File f;
+	private FileReader fr;
+	private BufferedReader br;
+	private int contador;
+
+	public Ejercicio04(String ruta) throws FileNotFoundException{
+		if(ruta.substring(ruta.length()-4).equals(".txt"))
+			f = new File(ruta);
+		fr = new FileReader(f);
+		br = new BufferedReader(fr);
+	}
+
+	public int getWordsCION() throws IOException{
+		contador = 0;
+		// creamos un StringBuffer donde almacenar las palabras
+		StringBuffer aux = new StringBuffer();
+		// mientras que el BufferedReader este listo seguira con la lectura
+		while(br.ready()){
+			// leemos la primera linea
+			String s = br.readLine();
+			// recorremos todo el string
+			for(int i=0; i<s.length(); i++){
+				// en caso de que el caracter en el que nos encontramos sea una letra la introducimos al StringBuffer
+				if(Character.isLetter(s.charAt(i)))
+					aux.append(s.charAt(i));
+				// si nos encontramos con un final de linea o un espacio en blanco significa final de palabra
+				if(s.charAt(i)==' ' || i==(s.length()-1)){
+					s=aux.toString().toLowerCase();
+					if(s.toString().equals("lunes") || s.toString().equals("martes") || s.toString().equals("miércoles") 
+							|| s.toString().equals("jueves") || s.toString().equals("vienes") || 
+							s.toString().equals("sábado") || s.toString().equals("domingo")){
+						contador++;
+					}
+					// reseteamos el StringBuffer para coger la siguiente palabra
+					aux = new StringBuffer();
+				}
+			}
+		}
+		return contador;
+	}
 }
