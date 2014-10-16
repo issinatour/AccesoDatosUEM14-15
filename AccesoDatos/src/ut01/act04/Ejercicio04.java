@@ -35,7 +35,7 @@ public class Ejercicio04 {
 				if(Character.isLetter(s.charAt(i)))
 					aux.append(s.charAt(i));
 				// si nos encontramos con un final de linea o un espacio en blanco significa final de palabra
-				if(s.charAt(i)==' ' || i==(s.length()-1)){				
+				if(s.charAt(i)==' ' || i==(s.length()-1)){	
 					if(aux.toString().endsWith("ción") || aux.toString().endsWith("cion")){
 						contador++;
 					}
@@ -44,6 +44,7 @@ public class Ejercicio04 {
 				}
 			}
 		}
+		br.close();
 		return contador;
 	}
 }
