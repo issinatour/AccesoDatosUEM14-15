@@ -23,23 +23,22 @@ public class Ejercicio04 {
 			int caracter;
 
 			while ((caracter = fr.read()) != -1) {
-				contenido.append((char) caracter);
-
-			}
-
-			for (int i = 0; i < contenido.length(); i++) {
-				if (contenido.toString().charAt(i) >= 'a'
-						&& contenido.toString().charAt(i) <= 'z') {
-					suma +=  +1   ;
+				if (esLetraMinuscula((char) caracter)) {
+					suma++;
 				}
 			}
 			fr.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		System.out.println(suma);
-		return null;
 
+		return Integer.toString(suma);
+
+	}
+
+	private boolean esLetraMinuscula(char letra) {
+
+		return (letra >= 'a' && letra <= 'z' || letra == '–');
 	}
 }
