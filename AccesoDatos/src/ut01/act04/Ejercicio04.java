@@ -29,8 +29,8 @@ public class Ejercicio04 {
 
 			for (int i = 0; i < contenido.length(); i++) {
 				if (contenido.toString().charAt(i) >= 'a'
-						&& contenido.toString().charAt(i) >= 'z') {
-					suma = contenido.toString().charAt(i)  ;
+						&& contenido.toString().charAt(i) <= 'z') {
+					suma +=  +1   ;
 				}
 			}
 			fr.close();
@@ -38,7 +38,7 @@ public class Ejercicio04 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println((char)suma);
+		System.out.println(suma);
 		return null;
 
 	}
