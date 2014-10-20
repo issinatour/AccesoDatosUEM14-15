@@ -28,7 +28,7 @@ public class Ejercicio04 {
 		while(br.ready()){
 			// leemos la primera linea
 			String s = br.readLine();
-			s.toLowerCase();
+			s = s.toLowerCase();
 			// recorremos todo el string
 			for(int i=0; i<s.length(); i++){
 				// en caso de que el caracter en el que nos encontramos sea una letra la introducimos al StringBuffer
