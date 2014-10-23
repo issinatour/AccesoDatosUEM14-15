@@ -1,7 +1,6 @@
 package ut01.act04;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -12,7 +11,6 @@ public class Ejercicio04 {
 	public String contarMin(String path) {
 		File archivo = null;
 		FileReader fr = null;
-		StringBuffer contenido = new StringBuffer();
 		int suma = 0;
 
 		try {
@@ -27,16 +25,30 @@ public class Ejercicio04 {
 					suma++;
 				}
 			}
-			fr.close();
+
 		} catch (IOException e) {
 
 			e.printStackTrace();
+
+		} finally {
+
+			if (fr != null) {
+				try {
+					fr.close();
+				} catch (IOException e) {
+
+					e.printStackTrace();
+				}
+			}
 		}
 
 		return Integer.toString(suma);
 
 	}
 
+	/*
+	 * Comprueba que la letra sea una letra minuscula
+	 */
 	private boolean esLetraMinuscula(char letra) {
 
 		return (letra >= 'a' && letra <= 'z' || letra == '–');
