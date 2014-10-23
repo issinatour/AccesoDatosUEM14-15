@@ -5,10 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Ejercicio04 {
-	/*
-	 * Cuenta el nœmero de letras minœsculas puras (sin acentuar ni diresis).
+
+	/**
+	 * Count the number of lowercase letters 
+	 * @param path
+	 * @return the number of lowercase letters
 	 */
-	public String contarMin(String path) {
+	public String countLowercase(String path) {
 		File archivo = null;
 		FileReader fr = null;
 		int suma = 0;
@@ -21,7 +24,7 @@ public class Ejercicio04 {
 			int caracter;
 
 			while ((caracter = fr.read()) != -1) {
-				if (esLetraMinuscula((char) caracter)) {
+				if (isLowercase((char) caracter)) {
 					suma++;
 				}
 			}
@@ -47,10 +50,11 @@ public class Ejercicio04 {
 	}
 
 	/*
-	 * Comprueba que la letra sea una letra minuscula
+	 * Verifies that the letters are lowercase
 	 */
-	private boolean esLetraMinuscula(char letra) {
+	private boolean isLowercase(char letra) {
 
 		return (letra >= 'a' && letra <= 'z' || letra == '–');
+		
 	}
 }

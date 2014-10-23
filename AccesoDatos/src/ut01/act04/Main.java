@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Ejercicio04 ej = new Ejercicio04();
-		String prueba = ej.contarMin("/Users/fj/git/AccesoDatosUEM/AccesoDatos/resources/Quijote.txt");
+		String prueba = ej.countLowercase("/Users/fj/git/AccesoDatosUEM/AccesoDatos/resources/Quijote.txt");
 		System.out.println(prueba);
 
 	}
