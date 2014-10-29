@@ -7,43 +7,93 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Ejercicio04 {
-
-	private File f;
-	private FileReader fr;
-	private BufferedReader br;
-	private int contador;
-
-	public Ejercicio04(String ruta) throws FileNotFoundException{
-		if(ruta.substring(ruta.length()-4).equals(".txt"))
-			f = new File(ruta);
-		fr = new FileReader(f);
-		br = new BufferedReader(fr);
+	
+	
+	public boolean isLetter(char letter){
+		return Character.isLetter(letter);
 	}
 
-	public int getWordsCION() throws IOException{
-		contador = 0;
-		// creamos un StringBuffer donde almacenar las palabras
-		StringBuffer aux = new StringBuffer();
-		// mientras que el BufferedReader este listo seguira con la lectura
-		while(br.ready()){
-			// leemos la primera linea
-			String s = br.readLine();
-			// recorremos todo el string
-			for(int i=0; i<s.length(); i++){
-				// en caso de que el caracter en el que nos encontramos sea una letra la introducimos al StringBuffer
-				if(Character.isLetter(s.charAt(i)))
-					aux.append(s.charAt(i));
-				// si nos encontramos con un final de linea o un espacio en blanco significa final de palabra
-				if(s.charAt(i)==' ' || i==(s.length()-1)){
-					s=aux.toString().toLowerCase();
-					if(s.toString().equals("lunes") || s.toString().equals("martes") || s.toString().equals("miércoles") 
-							|| s.toString().equals("jueves") || s.toString().equals("vienes") || 
-							s.toString().equals("sábado") || s.toString().equals("domingo")){
-						contador++;
+
+	public int countWords(String path, String word) {
+		BufferedReader br = null;
+		String buffer;
+		char character;
+		int numberWords = 0;
+		boolean readingWords = false; 
+		StringBuffer wordReaden = new StringBuffer();
+		try {
+
+			br = new BufferedReader(new FileReader(path));
+			while( (buffer = br.readLine())!=null ){
+				for(int i=0;i<buffer.length();i++){
+					character = buffer.charAt(i);
+					if(isLetter(character) && !readingWords) {
+						wordReaden.append(character);
+						readingWords = true;
 					}
-					// reseteamos el StringBuffer para coger la siguiente palabra
-					aux = new StringBuffer();
+					else if(isLetter(character) && readingWords ){
+						wordReaden.append(character);
+					}
+					else if(!isLetter(character) && readingWords ){
+						if(wordReaden.toString().toLowerCase().equals(word))
+							numberWords++;
+						wordReaden = new StringBuffer();
+						readingWords = false;
+					}
 				}
+					
+			}
+
+		} catch (FileNotFoundException e) {
+				System.out.println("fichero no encontrado");
+		} catch (IOException e) {
+		
+		} finally {
+
+			if (br != null)
+				try {
+					br.close();
+				} catch (IOException e) {
+
+				}
+		}
+
+		return numberWords;
+
+	}
+
+	String ruta = "./resources/Quijote.txt";
+
+	public int cuentaPalabra(String ruta) {
+		String palabra = "jueves";
+		File f = new File(ruta);
+		System.out.println("introduce un dia del la semana a buscar:");
+		int contador = 0;
+
+		if (f.isFile()) {
+			FileReader fr = null;
+			int letra;
+			try {
+				fr = new FileReader(f);
+				String pal = "";
+				while ((letra = fr.read()) != -1) {
+					char caracterleido = (char) letra;
+					if (Character.isLetter(caracterleido)) {
+						pal += letra;
+
+					} else {
+						if (caracterleido == ' ') {
+							if (pal.equals(palabra)) {
+								contador++;
+							}
+						}
+					}
+
+				}
+
+			} catch (IOException e) {
+
+				System.err.println();
 			}
 		}
 		return contador;
