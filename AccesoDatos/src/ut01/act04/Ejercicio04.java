@@ -22,7 +22,7 @@ public class Ejercicio04 {
 				br = new BufferedReader(fr);
 		}
 		
-		public int getWordsCION() throws IOException{
+		public int getWordsDIPT() throws IOException{
 			contador = 0;
 			// creamos un StringBuffer donde almacenar las palabras
 			StringBuffer aux = new StringBuffer();
