@@ -1,71 +1,52 @@
 package ut01.act04;
 
 public class Ejercicio04 {
-	/*int contadorDiptongos(String palabra) {
-		int diptongos = 0;
-		for(int i=0;i < palabra.length();i++){
-		if (palabra.indexOf("ui")>-1){
-		diptongos++;
-		}else if(palabra.indexOf("au")>-1){
-		diptongos++;
-		}else if(palabra.indexOf("eu")>-1){
-		diptongos++;
+	
+	import java.io.BufferedReader;
+	import java.io.File;
+	import java.io.FileNotFoundException;
+	import java.io.FileReader;
+	import java.io.IOException;
+
+	public class Ejercicio04 {
+		
+		private File f;
+		private FileReader fr;
+		private BufferedReader br;
+		private int contador;
+		
+		public Ejercicio04(String ruta) throws FileNotFoundException{
+			if(ruta.substring(ruta.length()-4).equals(".txt"))
+				f = new File(ruta);
+				fr = new FileReader(f);
+				br = new BufferedReader(fr);
 		}
+		
+		public int getWordsCION() throws IOException{
+			contador = 0;
+			// creamos un StringBuffer donde almacenar las palabras
+			StringBuffer aux = new StringBuffer();
+			// mientras que el BufferedReader este listo seguira con la lectura
+			while(br.ready()){
+				// leemos la primera linea
+				String s = br.readLine();
+				s = s.toLowerCase();
+				// recorremos todo el string
+				for(int i=0; i<s.length(); i++){
+					// en caso de que el caracter en el que nos encontramos sea una letra la introducimos al StringBuffer
+					if(Character.isLetter(s.charAt(i)))
+						aux.append(s.charAt(i));
+					// si nos encontramos con un final de linea o un espacio en blanco significa final de palabra
+					if(s.charAt(i)==' ' || i==(s.length()-1)){	
+						if(aux.toString().indexOf("ui") || aux.toString().indexOf("au") || aux.toString().indexOf("eu")){
+							contador++;
+						}
+						// reseteamos el StringBuffer para coger la siguiente palabra
+						aux = new StringBuffer();
+					}
+				}
+			}
+			br.close();
+			return contador;
 		}
-		return diptongos;
-		}*/
-	  String nombreFichero = "Quijote.txt";
-      //Declarar una variable FileReader
-      FileReader fr = null;
-      try {
-          //Abrir el fichero indicado en la variable nombreFichero
-          fr = new FileReader(nombreFichero);
-          //Leer el primer carácter
-          //Se debe almacenar en una variable de tipo int
-          int caract = fr.read();
-          //Se recorre el fichero hasta encontrar el carácter -1
-          //   que marca el final del fichero
-          while(caract != -1) {
-        	 // int contadorDiptongos(String caract) {
-        			int diptongos = 0;
-        	//		for(int i=0;i < palabra.length();i++){
-        			if (palabra.indexOf("ui")>-1){
-        			diptongos++;
-        			}else if(palabra.indexOf("au")>-1){
-        			diptongos++;
-        			}else if(palabra.indexOf("eu")>-1){
-        			diptongos++;
-        			}
-        	//		}
-        			return diptongos;
-        	//		}
-              //Mostrar en pantalla el carácter leído convertido a char
-              System.out.print((char)caract);
-              //Leer el siguiente carácter
-              caract = fr.read();
-          }
-      }
-      catch (FileNotFoundException e) {
-          //Operaciones en caso de no encontrar el fichero
-          System.out.println("Error: Fichero no encontrado");
-          //Mostrar el error producido por la excepción
-          System.out.println(e.getMessage());
-      }
-      catch (Exception e) {
-          //Operaciones en caso de error general
-          System.out.println("Error de lectura del fichero");
-          System.out.println(e.getMessage());
-      }
-      finally {
-          //Operaciones que se harán en cualquier caso. Si hay error o no.
-          try {
-              //Cerrar el fichero si se ha abierto
-              if(fr != null)
-                  fr.close();
-          }
-          catch (Exception e) {
-              System.out.println("Error al cerrar el fichero");
-              System.out.println(e.getMessage());
-          }
-      }
 }
