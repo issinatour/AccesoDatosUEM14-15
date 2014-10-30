@@ -59,7 +59,7 @@ public class Ejercicio04 {
 							|| aux.toString().indexOf("uay")!=-1) {
 						contador++;
 						
-						System.out.println(aux.toString());
+						System.out.println("El primer triptongo es:\n"+aux.toString()+"\nSu posición: ");
 						return posicion;
 					}
 					
