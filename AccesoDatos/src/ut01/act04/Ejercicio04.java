@@ -20,6 +20,8 @@ package ut01.act04;
 		//declaramos las variables
 		private String texto="\n";
 		private String txt="";
+		public final int TAM_BUFFER = 1024;
+		int numPentas = 0;
 	
 		//constructor con los dos metodos
 		
@@ -75,5 +77,85 @@ package ut01.act04;
 			    System.out.println("Final");
 			}
 	   }
+	   
+
+
+	public boolean isLetter(char letter) {
+		return Character.isLetter(letter);
+	}
+
+	public boolean isPentavocalica(String word) {
+		int numa = 0, nume = 0, numi = 0, numo = 0, numu = 0;
+		for (int x = 0; x < word.length(); x++) {
+			if (word.charAt(x) == 'a') {
+				numa++;
+			}
+			if (word.charAt(x) == 'e') {
+				nume++;
+			}
+			if (word.charAt(x) == 'i') {
+				numi++;
+			}
+			if (word.charAt(x) == 'o') {
+				numo++;
+			}
+			if (word.charAt(x) == 'u') {
+				numu++;
+			}
+		}
+		if (numa == 1 && nume == 1 && numi == 1 && numo == 1 && numu == 1) {
+			return true;
+		} else
+			return false;
+	}
+
+	/**
+	 * find the first word pentavolica and return the position in the sequence.
+	 * 
+	 * @param path
+	 * @throws IOException
+	 * 
+	 */
+
+	public void findPentavocalica(String path)   {
+
+		String sLinea;
+		String sPalabra;
+
+		// Cargamos el buffer con el contenido del archivo
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader(
+					"./resources/Quijote.txt"));
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try {
+			do {
+				// Leemos la primera linea
+				sLinea = br.readLine();
+				StringTokenizer st = new StringTokenizer(sLinea);
+				// bucle por todas las palabras
+				while (st.hasMoreTokens()) {
+					sPalabra = st.nextToken();
+					
+					if(isPentavocalica(sPalabra)){
+						numPentas++;
+						System.out.println("palabra ventavocalica: "+ sPalabra +", numero: "+numPentas);
+
+					}
+					
+
+				}
+			} while ((sLinea = br.readLine()) != null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 	 
 	}
