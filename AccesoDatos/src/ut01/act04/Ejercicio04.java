@@ -15,6 +15,7 @@ import java.io.StringReader;
 import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Ejercicio04 {
@@ -24,13 +25,6 @@ public class Ejercicio04 {
 	private String txt = "";
 	public final int TAM_BUFFER = 1024;
 	int numPentas = 0;
-
-	// constructor con los dos metodos
-
-	public Ejercicio04() {
-		leerArchivo();
-		guardarArchivo();
-	}
 
 	// metodo que lee el archivo para realizar la seleccion mayusculas y
 	// minusculas
@@ -152,24 +146,28 @@ public class Ejercicio04 {
 		}
 
 	}
-	
+
 	/**
 	 * Elimina los acentos de una línea
+	 * 
 	 * @param line
 	 * @return
 	 */
 	private String replaceAllAccents(String line) {
-		return line.replaceAll("Á", "A").replaceAll("É", "E").replaceAll("Í", "I").replaceAll("Ó", "O").replaceAll("Ú", "U").replaceAll("Ü", "U");
+		return line.replaceAll("Á", "A").replaceAll("É", "E")
+				.replaceAll("Í", "I").replaceAll("Ó", "O").replaceAll("Ú", "U")
+				.replaceAll("Ü", "U");
 
 	}
 
 	/**
 	 * Guarda el fichero en mayúsuculas y sin acéntos
+	 * 
 	 * @param pathIn
 	 * @param pathOut
 	 */
 	public void lowercaseFiletoUppercaseFile(String pathIn, String pathOut) {
-		// TODO Auto-generated method stub
+
 		BufferedReader streamIn = null;
 		BufferedWriter streamOut = null;
 		String line;
@@ -200,4 +198,88 @@ public class Ejercicio04 {
 		}
 	}
 
+	/**
+	 * return words starts with uppercase option 0 all words option 1 starts
+	 * with uppercase option 2 starts with lowercase
+	 * 
+	 * @param line
+	 * @return
+	 */
+	public ArrayList<String> listsWordsLine(String line, int option) {
+		char letter;
+		boolean readingWord = false;
+		ArrayList<String> listWords = new ArrayList<String>();
+		StringBuffer bufferWord = new StringBuffer();
+		String word;
+		for (int i = 0; i < line.length(); i++) {
+			letter = line.charAt(i);
+			if (!readingWord && Character.isLetter(letter)) {
+				readingWord = true;
+				bufferWord.append(letter);
+
+			} else if (readingWord && Character.isLetter(letter)) {
+				bufferWord.append(letter);
+			} else if (readingWord && !Character.isLetter(letter)) {
+				readingWord = false;
+				word = bufferWord.toString();
+				bufferWord.delete(0, word.length());
+				if (option == 0)
+					listWords.add(word);
+				else if ((option == 1)
+						&& (Character.isUpperCase(word.charAt(0))))
+					listWords.add(word);
+				else if ((option == 2)
+						&& (Character.isLowerCase(word.charAt(0))))
+					listWords.add(word);
+
+			} // end (readingWord && !Character.isLetter(letter))
+		} // end for
+
+		return listWords;
+	}
+
+	/**
+	 * Guarda el fichero en mayúsuculas y sin acéntos
+	 * 
+	 * @param pathIn
+	 * @param pathOut
+	 */
+	public void WordStartLowercaseFile(String pathIn, String pathOut, int option) {
+
+		BufferedReader streamIn = null;
+		BufferedWriter streamOut = null;
+		String line;
+		ArrayList<String> listWords;
+		try {
+			streamIn = new BufferedReader(new FileReader(pathIn));
+			streamOut = new BufferedWriter(new FileWriter(pathOut));
+
+			while ((line = streamIn.readLine()) != null) {
+				// System.out.println(line);
+				listWords = listsWordsLine(line, option);
+				for (String word : listWords) {
+					// System.out.println(word);
+					streamOut.write(word);
+					streamOut.newLine();
+				}
+			}
+
+		} catch (IOException e) {
+			System.err.println("Error I/O");
+		} finally {
+			if (streamIn != null) {
+				try {
+					streamIn.close();
+				} catch (IOException e) {
+				}
+			}
+			if (streamOut != null) {
+				try {
+					streamOut.close();
+				} catch (IOException e) {
+					System.err.println("Error I/O");
+				}
+			}
+		}
+	}
 }
