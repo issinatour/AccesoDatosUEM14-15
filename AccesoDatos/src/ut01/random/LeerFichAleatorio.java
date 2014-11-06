@@ -5,7 +5,7 @@ public class LeerFichAleatorio {
 	
 	
 
-	public  void printEmployee(String path) {
+	public void printEmployee(String path) {
 		
 		// declara el fichero de acceso aleatorio
 		RandomAccessFile streamIn = null;
@@ -20,7 +20,7 @@ public class LeerFichAleatorio {
 		
 		posicion = 0; //para situarnos al principio
 		do{ // recorremos los arrays
-			streamIn.seek(posicion); //nos posición 
+			streamIn.seek(posicion); //nos posiciï¿½n 
 			id=streamIn.readInt(); //leemos el id de empleado
 			for (int i = 0; i < nombre.length; i++){
 				aux = streamIn.readChar();//recorremos uno a uno los caracteres del apellido
@@ -37,7 +37,7 @@ public class LeerFichAleatorio {
 			posicion = posicion + 36; // nos situamos en el siguiente registro del empleado
 									  // Cada empleado ocupa 36 bytes (4+20+4+8)
 			// Si he recorrido todos los bytes salimos del while
-		} while (streamIn.getFilePointer()!=streamIn.length());
+		} while (streamIn.getFilePointer()>=streamIn.length());
 		} catch (FileNotFoundException e) {		
 		} catch (IOException e) {			
 		}
