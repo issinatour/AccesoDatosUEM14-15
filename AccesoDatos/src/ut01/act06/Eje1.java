@@ -60,10 +60,11 @@ public class Eje1 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		escribeNumeros("./resources/NUMEROS.BIN");
-		leerNumeros("./resources/NUMEROS.BIN");
+		System.out.println(":"+(int)'A');
+		
+		//escribeNumeros("./resources/NUMEROS.BIN");
+		//leerNumeros("./resources/NUMEROS.BIN");
 
 	}
 
