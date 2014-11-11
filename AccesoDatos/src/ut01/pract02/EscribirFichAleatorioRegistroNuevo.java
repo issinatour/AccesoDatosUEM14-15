@@ -1,4 +1,4 @@
-package ut01.random;
+package ut01.pract02;
 
 import java.io.*;
 

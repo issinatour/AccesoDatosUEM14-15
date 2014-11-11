@@ -1,4 +1,4 @@
-package ut01.act06;
+package ut01.pract01;
 
 public class Department implements java.io.Serializable {
 
