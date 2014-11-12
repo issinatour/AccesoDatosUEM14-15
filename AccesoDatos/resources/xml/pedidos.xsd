@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- definición de los elementos simples -->
+	<xs:element name="remitente" type="xs:string" />
+	<xs:element name="nombre" type="xs:string" />
+	<xs:element name="direccion" type="xs:string" />
+	<xs:element name="ciudad" type="xs:string" />
+	<xs:element name="pais" type="xs:string" />
+	<xs:element name="titulo" type="xs:string" />
+	<xs:element name="notas" type="xs:string"  />
+	<xs:element name="cantidad" type="xs:positiveInteger" />
+	<xs:element name="precio" type="xs:decimal" />
+
+	<!-- definición de los atributos -->
+	<xs:attribute name="idorden" type="xs:string" />
+
+	<!-- definición de los elementos complejos -->
+	<xs:element name="receptor">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="nombre" />
+				<xs:element ref="direccion" />
+				<xs:element ref="ciudad" />
+				<xs:element ref="pais" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="libro">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="titulo" />
+				<xs:element ref="notas" minOccurs="0"/>
+				<xs:element ref="cantidad" />
+				<xs:element ref="precio" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="pedido">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="remitente" />
+				<xs:element ref="receptor" />
+				<xs:element ref="libro" maxOccurs="unbounded" />
+			</xs:sequence>
+			<xs:attribute ref="idorden" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
+

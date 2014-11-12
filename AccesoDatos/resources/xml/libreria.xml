@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="libreria.xsl"?>
+<libreria>
+	<libro>
+		<titulo>El Asedio</titulo>
+		<autor>Arturo Pérez Reverte</autor>
+		<isbn>978‐84‐9964‐108‐93</isbn>
+		<precio>23.08€</precio>
+	</libro>
+	<libro>
+		<titulo>IT</titulo>
+		<autor>Stephen King</autor>
+		<isbn>978‐84‐9964‐108‐94</isbn>
+		<precio>20.06€</precio>
+	</libro>
+	<libro>
+		<titulo>El Padrino </titulo>
+		<autor>Mario Puzo</autor>
+		<isbn>978‐84‐9964‐108‐95</isbn>
+		<precio>20.06€</precio>
+	</libro>
+</libreria> 
+

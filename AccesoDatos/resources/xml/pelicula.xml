@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="pelicula.xsl"?>
+<pelicula>
+   <titulo>Torrente</titulo>
+   <director>Santiago Segura </director>
+   <actores>
+	<actor>Santiago Segura </actor>
+   </actores>
+</pelicula> 	
