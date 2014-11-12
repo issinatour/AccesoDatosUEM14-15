@@ -23,9 +23,33 @@ public class Quijote {
 	 * signos de puntuaciï¿½n, cifras y otros caracteres
 	 */
 
-	private static int esVocal(char c) {
+	public static int esVocal(char c) {
 		
-		return "áéíóú".indexOf(Character.toLowerCase(c));
+		switch(Character.toLowerCase(c)){
+			
+		// a
+		case '\u00e1':
+		case '\u0061': 
+			return 1;
+		// e
+		case '\u00E9':
+		case '\u0065': 
+			return 2;
+		// i
+		case '\u00ED':
+		case '\u0069': 
+			return 3;
+		// o
+		case '\u00F3':
+		case '\u006F': 
+			return 4;
+		// u
+		case '\u00FA':
+		case '\u0075':
+		case '\u00FC':
+			return 5;
+		}
+		return -1;
 	}
 
 	private static boolean esPentaVocalica(String p) {
