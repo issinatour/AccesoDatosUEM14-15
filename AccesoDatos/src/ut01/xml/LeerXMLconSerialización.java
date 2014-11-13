@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.thoughtworks.xstream.XStream;
 
-public class LeerEmpleados {
+public class LeerXMLconSerialización {
 
 	public static List<Empleado> leerXML() throws IOException {
 

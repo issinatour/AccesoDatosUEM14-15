@@ -10,7 +10,7 @@ import javax.xml.transform.stream.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class CrearXMLDiscografica  {
+public class CrearXMLconDOMdiscografica  {
 	
 	// Insercion de los datos del disco
 	static void CrearElemento(String datoEmple, String valor,Element raiz, Document document){

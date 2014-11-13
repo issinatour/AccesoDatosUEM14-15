@@ -3,7 +3,7 @@ import java.io.File;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
-public class LeerEmpleadoXml {
+public class LeerXMLEmpleadoConDOM {
 	
 	public static void main(String[] args) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();

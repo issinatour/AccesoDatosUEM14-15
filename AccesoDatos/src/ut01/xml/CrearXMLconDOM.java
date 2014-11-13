@@ -10,7 +10,7 @@ import javax.xml.transform.stream.*;
 import java.io.*;
 import java.util.Date;
 
-public class CrearEmpleadoNuevoXML {
+public class CrearXMLconDOM {
 
 	// Inserción de los datos del empleado
 	static void CrearElemento(String datoEmple, String valor, Element raiz,

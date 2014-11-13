@@ -7,7 +7,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-public class PruebaSax1 {
+public class LeerXMLconSAX {
 
 	public static void main(String[] args) 
 					throws FileNotFoundException, IOException  {

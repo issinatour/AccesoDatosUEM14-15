@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import com.thoughtworks.xstream.XStream;
 
-public class EscribirEmpleadosXML {
+public class CrearXMLconSerializacion {
 
 	public static void crearXML(ListaEmpleados listaper) throws IOException,
 			ClassNotFoundException {
