@@ -11,7 +11,7 @@ import java.util.Date;
 public class Employee implements Serializable {
 	private int emp_no;
 	private String lastname;
-	private String name_for;
+	private String name;
 	private String job;
 	//private GregorianCalendar regis_date;
 	private Date regis_date;
@@ -40,7 +40,7 @@ public class Employee implements Serializable {
 		} catch (Exception ex) {
 			this.emp_no = 0;
 			this.lastname = " ";
-			this.name_for = " ";
+			this.name = " ";
 			this.job = " ";
 			this.Salary = 0;
 			this.commission = 0;
@@ -76,14 +76,14 @@ public class Employee implements Serializable {
 	}
 
 	public String getName_for() {
-		return name_for;
+		return name;
 	}
 
 	public void setName_for(String name_for) {
 		if (name_for.length() > 10) {
-			this.name_for = name_for.substring(0, tamanoTotal);
+			this.name = name_for.substring(0, tamanoTotal);
 		} else {
-			this.name_for = name_for;
+			this.name = name_for;
 		}
 
 	}
@@ -182,7 +182,7 @@ public class Employee implements Serializable {
 		if (!this.lastname.equals(other.lastname)) {
 			return false;
 		}
-		if (!this.name_for.equals(other.name_for)) {
+		if (!this.name.equals(other.name)) {
 			return false;
 		}
 		if (!this.job.equals(other.job)) {
@@ -207,7 +207,7 @@ public class Employee implements Serializable {
 	@Override
 	public String toString() {
 		return "Employee:" + "emp_no=" + emp_no + ", lastname=" + lastname
-				+ ", name_for=" + name_for + ", job=" + job + ", regis_date="
+				+ ", name_for=" + name + ", job=" + job + ", regis_date="
 				+ this.getRegis_date() + ", Salary=" + Salary + ", commission="
 				+ commission + ", Dept_number=" + Dept_number + '}';
 	}
