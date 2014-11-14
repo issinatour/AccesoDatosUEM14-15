@@ -3,13 +3,13 @@ import javax.xml.transform.*;
 import javax.xml.transform.stream.*;
 import java.io.*;
 
-public class Convertidor {
+public class XMLandXSLtoHTML {
 	
 		public static void convertidor(String docXML, String docXLS, File docHMTL) throws IOException{
 			 FileOutputStream os = new FileOutputStream(docHMTL); // crear fichero HTML
              Source estilos = new StreamSource(docXLS); //fuente XLS
              Source datos = new StreamSource(docXML); //fuente XML
-             Result result = new StreamResult(os); // resultado de la transformaci—n
+             Result result = new StreamResult(os); // resultado de la transformaciï¿½n
              try{
                      
                      Transformer transformer =

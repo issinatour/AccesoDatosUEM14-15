@@ -28,20 +28,20 @@ public class CrearXMLconDOMdiscografica  {
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			DOMImplementation implementation = builder.getDOMImplementation();
 			
-			// Creamos un documento vac’o de nombre  con el nodo ra’z de nombre Discografiac 
+			// Creamos un documento vacio de nombre  con el nodo raiz de nombre Discografiac 
 			Document document = implementation.createDocument(null, "Discografica",null);
-			// Asignamos la versi—n del XML
+			// Asignamos la version del XML
 			document.setXmlVersion("1.0"); //asignamos la version de nuestro XML
 			
 			
 			
 				for(Disco disco: discografica)	{
 					Element raiz = document.createElement("Disco"); // nodo empleado
-					document.getDocumentElement().appendChild(raiz); // lo pegamos a la raíz del documento
+					document.getDocumentElement().appendChild(raiz); // lo pegamos a la raiz del documento
 					
-					CrearElemento("titulo",disco.getTitulo(), raiz, document);// Añadir ID
-					CrearElemento("formato",disco.getFormato().toString(),raiz, document);// Añadir apellido
-					CrearElemento("autor",disco.getAutor(),raiz,document); //Añadir departamento
+					CrearElemento("titulo",disco.getTitulo(), raiz, document);// Agnadir ID
+					CrearElemento("formato",disco.getFormato().toString(),raiz, document);// Agnadir apellido
+					CrearElemento("autor",disco.getAutor(),raiz,document); //Agnadir departamento
 			
 				}
 				
